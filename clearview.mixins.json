@@ -1,0 +1,7 @@
+{
+  "required": false,
+  "package": "com.clearview.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "client": ["HeldItemRendererMixin", "LivingEntityMixin", "ScreenMixin", "CameraMixin", "EntityLookMixin", "WeatherMixin"],
+  "injectors": { "defaultRequire": 0 }
+}

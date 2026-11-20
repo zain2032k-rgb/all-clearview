@@ -19,11 +19,16 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: 9.2.1
-      - run: gradle build
-      - name: Show built files
+      - name: Diagnose
         run: |
-          ls -la build/libs || true
-          find src -type f | head -50
+          echo "--- files in root"; ls -la
+          echo "--- settings.gradle"; cat settings.gradle || true
+          echo "--- build.gradle (first 25 lines)"; head -25 build.gradle || true
+          echo "--- java files"; find src -name "*.java" | sort
+      - name: Build
+        run: gradle build --console=plain
+      - name: Show output
+        run: ls -la build || true; ls -la build/libs || true
       - uses: actions/upload-artifact@v4
         with:
           name: clearview-client-jar
